@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[edit update destroy]
+  before_action :set_task, only: %i[edit update show destroy]
 
   def index
     @tasks = Task.order(priority: :desc, due_date: :asc)
@@ -20,6 +20,7 @@ class TasksController < ApplicationController
   end
 
   def edit; end
+  def show; end
 
   def update
     if @task.update(task_params)

@@ -29,6 +29,9 @@
 
   <body>
   <div class="ps-5">
+  <%= turbo_stream_from "notifications" %>
+  <div id="notification-area"></div>
+
     <%= yield %>
     </div>
   </body>
