@@ -13,6 +13,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       redirect_to tasks_path, notice: 'Task created successfully!'
+      # format.turbo_stream
     else
       render :new, status: :unprocessable_entity
     end

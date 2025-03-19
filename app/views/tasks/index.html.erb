@@ -12,15 +12,16 @@
     </tr>
   </thead>
   <tbody>
+  <div id="tasks">
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.title %></td>
         <td><%= task.priority %></td>
         <td><%= task.due_date %></td>
-        <td><%= task.status %></td>
+        <td id="task_<%= task.id %>"> <p>Status: <span class="badge bg-<%= status_color(task.status) %>"><%= task.status.titleize %></span></p></td>
         <td>
           <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: <%= task.progress %>%;" aria-valuenow="<%= task.progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" role="progressbar" style="width: <%= task.status == "Completed" ? 100 : task.progress %>%;" aria-valuenow="<%= task.status == "Completed" ? 100 : task.progress %>" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </td>
         <td>
@@ -29,5 +30,6 @@
         </td>
       </tr>
     <% end %>
+    </div>
   </tbody>
 </table>

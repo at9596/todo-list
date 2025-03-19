@@ -1,3 +1,4 @@
+<div id="task_<%= task.id %>" data-reflex="click->TaskReflex#toggle_complete" data-id="<%= task.id %>">
 <%= form_with(model: task, local: true) do |form| %>
     <div class="mb-3">
       <%= form.label :title %>
@@ -19,9 +20,10 @@
       <%= form.date_field :due_date, class: "form-control" %>
     </div>
   
+    
     <div class="mb-3">
-      <%= form.label :status %>
-      <%= form.select :status, ["Not Started", "In Progress", "Completed"], {}, class: "form-control" %>
+        <%= form.label :status %>
+        <%= form.select :status,["Not Started", "In Progress", "Completed"], {}, class: "form-control", data: { reflex: "change->TaskReflex#update_status", id: task.id } %>
     </div>
   
     <div class="mb-3">
@@ -31,3 +33,4 @@
   
     <%= form.submit class: "btn btn-success" %>
   <% end %>
+  </div>
