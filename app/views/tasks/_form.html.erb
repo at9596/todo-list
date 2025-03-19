@@ -1,0 +1,33 @@
+<%= form_with(model: task, local: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+    
+    <div class="mb-3">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :priority %>
+      <%= form.number_field :priority, class: "form-control" %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :due_date %>
+      <%= form.date_field :due_date, class: "form-control" %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :status %>
+      <%= form.select :status, ["Not Started", "In Progress", "Completed"], {}, class: "form-control" %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :progress, "Progress (%)" %>
+      <%= form.number_field :progress, in: 0..100, class: "form-control" %>
+    </div>
+  
+    <%= form.submit class: "btn btn-success" %>
+  <% end %>
